@@ -1,0 +1,25 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "UCF Bootcamp Homework -> Week 8",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walshcam/burger.git"
+  },
+  "author": "Cameron",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walshcam/burger/issues"
+  },
+  "homepage": "https://github.com/walshcam/burger#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.15.0"
+  }
+}
