@@ -8,7 +8,7 @@ var connection = require("../config/connection.js");
 let orm = {
 
     //*********Used to display all burgers on the screen**********
-    selectAll: function(callback) {
+    read: function(callback) {
         let queryString = "SELECT * FROM burgers";
         connection.query(queryString, function(err, result) {
             if (err) {
@@ -20,7 +20,7 @@ let orm = {
     },
 
     //**********Insert a burger from input field************
-    insertOne: function(burger_name, callback) {
+    create: function(burger_name, callback) {
         //Query construction for burgers table
         let queryString = "INSERT INTO ";
         queryString += "burgers ";
@@ -40,7 +40,7 @@ let orm = {
     },
 
     //**************Change a burger from Available to Devoured***********
-    updateOne: function(burger_name, callback) {
+    update: function(burger_name, callback) {
         //Query construction for burgers table
         let queryString = "UPDATE ";
         queryString += "burgers ";
