@@ -15,8 +15,8 @@ var orm = require("../config/orm.js");
         });
     },
     //update - Change burger to devoured
-    update: function() {
-        orm.update(burger_name, function(results) {
+    update: function(burger_name, setCondition, callback) {
+        orm.update(burger_name, setCondition, function(results) {
             callback(results);
         });
     }

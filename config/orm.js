@@ -1,7 +1,5 @@
-import { connect } from "net";
-
 // Import MySQL connection.
-var connection = require("../config/connection.js");
+let connection = require("../config/connection.js");
 
 //orm function
 
@@ -40,12 +38,12 @@ let orm = {
     },
 
     //**************Change a burger from Available to Devoured***********
-    update: function(burger_name, callback) {
+    update: function(burger_name, setCondition, callback) {
         //Query construction for burgers table
         let queryString = "UPDATE ";
         queryString += "burgers ";
         queryString += "SET devoured = 1 ";
-        queryString += "WHERE burger_name = ?";
+        queryString += "WHERE " + setCondition;
  
         //Values to be inserted into query above
         let values = burger_name
