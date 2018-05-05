@@ -10,13 +10,14 @@ var orm = require("../config/orm.js");
     },
     //create - Create new burger
     create: function(burger_name, callback) {
+        console.log("burger.js line 13: burger_name: " + burger_name);
         orm.create(burger_name, function(results) {
             callback(results);
         });
     },
     //update - Change burger to devoured
-    update: function(burger_name, setCondition, callback) {
-        orm.update(burger_name, setCondition, function(results) {
+    update: function(setCondition, callback) {
+        orm.update(setCondition, function(results) {
             callback(results);
         });
     }

@@ -1,9 +1,9 @@
-var express = require("express");
+let express = require("express");
 
-var router = express.Router();
+let router = express.Router();
 
 // Import the model (burger.js) to use its database functions.
-var cat = require("../models/burger.js");
+let burger = require("../models/burger.js");
 
 //************ROUTES********************* */
 
@@ -13,14 +13,15 @@ router.get("/", function(req, res) {
         let burgerObject = {
             burgers: data
         };
-        console.log(burgerObject);
+        console.log("burgers_controller.js line 16: " + burgerObject);
         res.render("index", burgerObject);
     });
 });
 
 //Route to POST new burger
 router.post("/api/burgers", function(req, res) {
-    burger.create(burger_name, function(results) {
+    console.log("burgers_controller.js line 23: req.body input: " + req.body.burger_name);
+    burger.create(req.body.burger_name, function(results) {
         //Send back ID of new burger
         res.json({id: results.insertId});
     });
@@ -30,16 +31,17 @@ router.post("/api/burgers", function(req, res) {
 router.put("/api/burgers/:id", function(req, res) {
     let setCondition = "id = " + req.params.id;
 
-    console.log("condition: " + setCondition);
+    console.log("burgers_controller.js line 33: condition: " + setCondition);
 
-    burger.update({
-        burger_name: req.body.burger_name
-    }),
-    setCondition,
-    function(results) {
-        if (results.changedRows === 0) {
-            return res.status(404).end();
+    burger.update(
+        setCondition,
+        function(results) {
+            if (results.changedRows === 0) {
+                return res.status(404).end();
+            }
+            res.status(200).end();
         }
-        res.status(200).end();
-    }
+    )
 });
+
+module.exports = router;

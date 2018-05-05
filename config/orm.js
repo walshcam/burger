@@ -22,11 +22,14 @@ let orm = {
         //Query construction for burgers table
         let queryString = "INSERT INTO ";
         queryString += "burgers ";
-        queryString += "(burger_name, devoured) ";
-        queryString += "VALUES ?";
+        queryString += "SET ?";
 
         //Values to be inserted into query above
-        let values = [burger_name, false];
+        let values = 
+        {
+            burger_name: burger_name, 
+            devoured: false
+        };
 
         connection.query(queryString, values, function(err, result) {
             if (err) {
@@ -38,17 +41,14 @@ let orm = {
     },
 
     //**************Change a burger from Available to Devoured***********
-    update: function(burger_name, setCondition, callback) {
+    update: function(setCondition, callback) {
         //Query construction for burgers table
         let queryString = "UPDATE ";
         queryString += "burgers ";
         queryString += "SET devoured = 1 ";
         queryString += "WHERE " + setCondition;
- 
-        //Values to be inserted into query above
-        let values = burger_name
 
-        connection.query(queryString, [values], function(err, result) {
+        connection.query(queryString, function(err, result) {
             if (err) {
                 throw err;
             }

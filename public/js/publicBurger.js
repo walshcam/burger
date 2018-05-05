@@ -1,16 +1,11 @@
 $(function() {
     $(".devourIT").on("click", function(event) {
         let id = $(this).data("id");
-        let devour = $(this).data("devoured");
-
-        let newAvailability = {
-            devoured: devour
-        };
+        console.log("publicBurger.js line 5: id: " + id);
 
         //Send the PUT request
-        $.ajax("/api/burgers" + id, {
-            type: "PUT",
-            data: newAvailability
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT"
         }).then(
             function() {
                 console.log("Burger has been devoured!")
