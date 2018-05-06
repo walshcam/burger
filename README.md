@@ -8,6 +8,12 @@ This is a database app that allows the user to manipulate a MySQL database using
 
 ![Burger Menu GIF](./gif/burgerMenu.gif)
 
+## MySQL
+
+![MySQL Table](./gif/bugerMySQL-Database.JPG)
+
+This project uses a single table that allows the user to insert new burgers into the table and change the "devoured" column from false to true.
+
 ## TECHNOLOGIES APPLIED
 
 - MVC Framework
